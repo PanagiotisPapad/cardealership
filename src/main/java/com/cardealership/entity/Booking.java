@@ -1,19 +1,45 @@
 package com.cardealership.entity;
 
-import java.util.ArrayList;
+import java.time.LocalDateTime;
 
+import com.cardealership.types.BookingType;
+
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "bookings")
 public class Booking {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
+    @ManyToOne
+    @JoinColumn(name = "vat")
     private Citizen citizen;
-    private Car car;
-    private String date;
-    private int time;
 
-    public Booking(Citizen citizen, Car car, String date, int time) {
+    @ManyToOne
+    @JoinColumn(name = "car_id")
+    private Car car;
+
+    @Column
+    private LocalDateTime date;
+
+    @Enumerated(EnumType.STRING)
+    @Column
+    private BookingType type;
+
+    public Booking() {
+    };
+
+    public Booking(Citizen citizen, Car car, LocalDateTime date, BookingType type) {
         this.citizen = citizen;
         this.car = car;
         this.date = date;
-        this.time = time;
+        this.type = type;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public Citizen getCitizen() {
@@ -32,20 +58,19 @@ public class Booking {
         this.car = car;
     }
 
-    public String getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 
-    public int getTime() {
-        return time;
+    public BookingType getType() {
+        return type;
     }
 
-    public void setTime(int time) {
-        this.time = time;
+    public void setType(BookingType type) {
+        this.type = type;
     }
-
 }

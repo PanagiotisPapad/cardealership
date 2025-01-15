@@ -1,13 +1,24 @@
 package com.cardealership.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import com.cardealership.entity.Citizen;
+import com.cardealership.service.CitizenService;
 
 @RestController
+@RequestMapping("/api") // Add this to match your base URL pattern
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class CitizenController {
 
-    @GetMapping("/citizen")
-    public String citizen() {
-        return "This is a citizen";
+    @Autowired
+    private CitizenService citizenService;
+
+    @PostMapping("/citizen/login")
+    public ResponseEntity<String> login(@RequestParam String vat, @RequestParam String password) {
+        return citizenService.login(vat, password)
+                .map(citizen -> ResponseEntity.ok("Login successful"))
+                .orElse(ResponseEntity.badRequest().body("Invalid credentials"));
     }
 }
