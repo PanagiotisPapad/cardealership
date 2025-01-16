@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -40,5 +42,10 @@ public class CarController {
     @PostMapping("/addCar")
     public void addCar(@RequestBody Car car, @RequestParam String dealershipVat) throws Exception {
         carService.addCar(car, dealershipVat);
+    }
+
+    @PutMapping("updateCarAmount/{id}")
+    public void updateCarAmount(@PathVariable Long id, @RequestParam int newAmount) throws Exception {
+        carService.updateCarAmount(id, newAmount);
     }
 }

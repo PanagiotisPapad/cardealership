@@ -38,7 +38,7 @@ public class Car {
     private String additionalInfo;
 
     @Column
-    private int ammount;
+    private int amount;
 
     @JsonIgnore
     @ManyToOne
@@ -54,7 +54,7 @@ public class Car {
 
     public Car(String brandName, String model, FuelType fuel, String engine, int seats, int price,
             String additionalInfo,
-            int ammount) {
+            int amount) {
         this.brandName = brandName;
         this.model = model;
         this.fuel = fuel;
@@ -62,7 +62,7 @@ public class Car {
         this.seats = seats;
         this.price = price;
         this.additionalInfo = additionalInfo;
-        this.ammount = ammount;
+        this.amount = amount;
     }
 
     public Long getId() {
@@ -125,12 +125,12 @@ public class Car {
         this.additionalInfo = additionalInfo;
     }
 
-    public int getAmmount() {
-        return ammount;
+    public int getAmount() {
+        return amount;
     }
 
-    public void setAmmount(int ammount) {
-        this.ammount = ammount;
+    public void setAmount(int amount) {
+        this.amount = amount;
     }
 
     public Dealership getDealership() {
