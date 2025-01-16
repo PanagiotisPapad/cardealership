@@ -12,8 +12,11 @@ public class CitizenService {
     @Autowired
     private CitizenRepository citizenRepository;
 
-    public void addCitizen(Citizen citizen) {
-        citizenRepository.save(citizen);
+    public void addCitizen(Citizen citizen) throws Exception {
+        Optional<Citizen> byId = citizenRepository.findById(citizen.getVat());
+        if (!byId.isPresent()) {
+            citizenRepository.save(citizen);
+        }
     }
 
     public Optional<Citizen> login(String vat, String password) {

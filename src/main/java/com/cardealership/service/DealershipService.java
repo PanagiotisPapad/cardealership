@@ -13,8 +13,11 @@ public class DealershipService {
     @Autowired
     private DealershipRepository dealershipRepository;
 
-    public void addDealership(Dealership dealership) {
-        dealershipRepository.save(dealership);
+    public void addDealership(Dealership dealership) throws Exception {
+        Optional<Dealership> byId = dealershipRepository.findById(dealership.getVat());
+        if (!byId.isPresent()) {
+            dealershipRepository.save(dealership);
+        }
     }
 
     public Optional<Dealership> login(String vat, String password) {
