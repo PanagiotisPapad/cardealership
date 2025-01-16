@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.cardealership.types.FuelType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.*;
 
@@ -39,10 +40,12 @@ public class Car {
     @Column
     private int ammount;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "dealership_vat")
     private Dealership dealership;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "car", cascade = CascadeType.ALL)
     private Set<Booking> bookings = new HashSet<>();
 
