@@ -10,13 +10,10 @@ public class Dealership {
     @Id
     private String vat;
 
-    @Column
     private String name;
 
-    @Column
     private String owner;
 
-    @Column
     private String password;
 
     @OneToMany(mappedBy = "dealership", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -26,7 +23,6 @@ public class Dealership {
     public Dealership() {
     }
 
-    // Constructor with fields
     public Dealership(String vat, String name, String owner, String password) {
         this.vat = vat;
         this.name = name;
@@ -34,7 +30,6 @@ public class Dealership {
         this.password = password;
     }
 
-    // Getters and Setters
     public String getVat() {
         return vat;
     }

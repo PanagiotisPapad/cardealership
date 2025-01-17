@@ -21,11 +21,9 @@ public class Booking {
     @JoinColumn(name = "car_id")
     private Car car;
 
-    @Column
     private LocalDateTime date;
 
     @Enumerated(EnumType.STRING)
-    @Column
     private BookingType type;
 
     public Booking() {

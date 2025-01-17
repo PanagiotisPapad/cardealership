@@ -10,16 +10,13 @@ public class Citizen {
     @Id
     private String vat;
 
-    @Column
     private String firstName;
 
-    @Column
     private String lastName;
 
     @Column(nullable = false, unique = true)
     private String email;
 
-    @Column
     private String password;
 
     @OneToMany(mappedBy = "citizen", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -37,7 +34,6 @@ public class Citizen {
         this.password = password;
     }
 
-    // Getters and Setters
     public String getVat() {
         return vat;
     }

@@ -19,28 +19,20 @@ public class Car {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
     private String brandName;
 
-    @Column
     private String model;
 
-    @Column
     private FuelType fuel;
 
-    @Column
     private String engine;
 
-    @Column
     private int seats;
 
-    @Column
     private int price;
 
-    @Column
     private String additionalInfo;
 
-    @Column
     private int amount;
 
     @ManyToOne(fetch = FetchType.EAGER)
