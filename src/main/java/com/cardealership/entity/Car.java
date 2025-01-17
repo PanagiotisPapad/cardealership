@@ -4,7 +4,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.cardealership.types.FuelType;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.persistence.*;
 
@@ -40,13 +43,19 @@ public class Car {
     @Column
     private int amount;
 
-    @JsonIgnore
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "dealership_vat")
+    @JsonBackReference
     private Dealership dealership;
+
+    @JsonProperty("dealershipVat")
+    public String getDealershipVat() {
+        return dealership != null ? dealership.getVat() : null;
+    }
 
     @JsonIgnore
     @OneToMany(mappedBy = "car", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private Set<Booking> bookings = new HashSet<>();
 
     public Car() {
