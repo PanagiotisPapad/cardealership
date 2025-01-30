@@ -40,7 +40,7 @@ public class Car {
     @JsonBackReference
     private Dealership dealership;
 
-    @JsonProperty("dealershipVat")
+    @JsonProperty("dealershipVat") // custom getter that returns the VAT number of the dealership
     public String getDealershipVat() {
         return dealership != null ? dealership.getVat() : null;
     }

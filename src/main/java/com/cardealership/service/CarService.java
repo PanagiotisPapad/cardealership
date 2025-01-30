@@ -47,10 +47,10 @@ public class CarService {
     }
 
     public void updateCarAmount(Long id, int newAmount) throws Exception {
-        Optional<Car> byId = carRepository.findById(id);
-        if (byId.isPresent()) {
-            byId.get().setAmount(newAmount);
-            carRepository.save(byId.get());
+        Optional<Car> carId = carRepository.findById(id);
+        if (carId.isPresent()) {
+            carId.get().setAmount(newAmount);
+            carRepository.save(carId.get());
         }
     }
 }

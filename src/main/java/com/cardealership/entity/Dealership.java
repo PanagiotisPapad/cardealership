@@ -70,13 +70,11 @@ public class Dealership {
         this.cars = cars;
     }
 
-    // Helper method to add a car
     public void addCar(Car car) {
         cars.add(car);
         car.setDealership(this);
     }
 
-    // Helper method to remove a car
     public void removeCar(Car car) {
         cars.remove(car);
         car.setDealership(null);

@@ -82,19 +82,16 @@ public class Citizen {
         this.bookings = bookings;
     }
 
-    // Helper method to add a booking
     public void addBooking(Booking booking) {
         bookings.add(booking);
         booking.setCitizen(this);
     }
 
-    // Helper method to remove a booking
     public void removeBooking(Booking booking) {
         bookings.remove(booking);
         booking.setCitizen(null);
     }
 
-    // Helper method to get full name
     public String getFullName() {
         return firstName + " " + lastName;
     }
